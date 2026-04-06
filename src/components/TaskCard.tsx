@@ -1,5 +1,7 @@
 import { memo, useState } from "react";
 import { useSortable } from "@dnd-kit/react/sortable";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { Task, ColumnId, TaskColor } from "../types/task";
 import { TASK_COLORS } from "../types/task";
 import { TaskForm } from "./TaskForm";
@@ -72,9 +74,11 @@ export const TaskCard = memo(function TaskCard({
         {task.title}
       </span>
       {task.description && (
-        <span className="block mt-1 pr-10 break-words text-xs leading-relaxed text-muted-foreground">
-          {task.description}
-        </span>
+        <div className="card-markdown mt-1 pr-10 text-xs leading-relaxed text-muted-foreground">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {task.description}
+          </ReactMarkdown>
+        </div>
       )}
 
       <div className="absolute top-2 right-2 flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">

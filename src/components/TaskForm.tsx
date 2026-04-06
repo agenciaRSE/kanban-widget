@@ -62,6 +62,10 @@ export function TaskForm({
         className="w-full bg-secondary/60 border border-border/60 focus:border-ring rounded-lg px-3 py-2 text-[12px] leading-relaxed text-foreground placeholder:text-muted-foreground/50 outline-none transition-all resize-none focus:shadow-[0_0_0_2px_var(--color-ring)/20]"
       />
 
+      <p className="text-[10px] text-muted-foreground/35 px-0.5 -mt-1">
+        **bold** &nbsp;*italic* &nbsp;~~strike~~ &nbsp;- list
+      </p>
+
       <div className="flex items-center gap-1.5 px-0.5">
         <span className="text-[10px] text-muted-foreground/50 mr-1 uppercase tracking-wider">Color</span>
         {COLOR_KEYS.map((c) => (
