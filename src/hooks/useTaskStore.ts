@@ -137,6 +137,13 @@ export function useTaskStore() {
     []
   );
 
+  /** Overwrite local state with data received from the cloud */
+  const loadState = useCallback((data: StoreData) => {
+    setTasks(data.tasks);
+    setColumns(data.columns);
+    if (data.columnLabels) setColumnLabels(data.columnLabels);
+  }, []);
+
   const persist = useCallback(() => {
     persistState();
   }, [persistState]);
@@ -151,6 +158,7 @@ export function useTaskStore() {
     deleteTask,
     renameColumn,
     updateColumns,
+    loadState,
     persist,
   };
 }

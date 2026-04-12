@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { SyncButton } from "./SyncButton";
+import type { SyncStatus } from "../hooks/useCloudSync";
 
 const appWindow = getCurrentWindow();
 
-export function TitleBar() {
+interface TitleBarProps {
+  syncStatus: SyncStatus;
+  userEmail: string | null | undefined;
+  onSyncClick: () => void;
+}
+
+export function TitleBar({ syncStatus, userEmail, onSyncClick }: TitleBarProps) {
   const [pinned, setPinned] = useState(false);
 
   const togglePin = async () => {
@@ -46,6 +54,14 @@ export function TitleBar() {
       </div>
 
       <div className="flex items-center gap-1">
+        {/* Sync / Premium button */}
+        <SyncButton
+          status={syncStatus}
+          userEmail={userEmail}
+          onClick={onSyncClick}
+        />
+
+        {/* Pin on top */}
         <button
           onClick={togglePin}
           className={`w-7 h-7 flex items-center justify-center rounded-md transition-colors
@@ -68,6 +84,7 @@ export function TitleBar() {
           </svg>
         </button>
 
+        {/* Minimize */}
         <button
           onClick={() => appWindow.minimize()}
           className="w-7 h-7 flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
@@ -78,6 +95,7 @@ export function TitleBar() {
           </svg>
         </button>
 
+        {/* Close */}
         <button
           onClick={() => appWindow.close()}
           className="w-7 h-7 flex items-center justify-center rounded-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"

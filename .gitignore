@@ -23,6 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables (contain secrets)
+.env
+.env.local
+.env.*.local
+
 # Tauri build output
 src-tauri/target/
 
