@@ -35,20 +35,16 @@ It follows a simple Kanban flow across three customizable columns, supports rich
 - 💾 **Auto-save** — changes persist instantly to a local JSON file
 - 📐 **Responsive** — columns stack vertically when the window is narrow
 - 🪶 **Ultra-lightweight** — ~42 MB RAM, no Electron, no Chromium overhead
-- 🔒 **100% local** — no accounts, no telemetry, no internet required
+- 🔒 **Local first** — works offline with no account and no telemetry
+- ☁️ **Optional cross-device sync** — sign in and sync your board through your own Supabase project ([setup guide](docs/SUPABASE_SETUP.md))
 
 ---
 
 ## Installation
 
-Download the latest installer from [**Releases**](https://github.com/agenciaRSE/kanban-widget/releases):
+Prebuilt installers aren't published yet. For now, [build it from source](#building-from-source): `pnpm tauri build` produces both a setup `.exe` (NSIS) and an `.msi` package.
 
-| Installer | Description |
-|-----------|-------------|
-| `Kanban Widget_x.x.x_x64-setup.exe` | NSIS installer — recommended for most users |
-| `Kanban Widget_x.x.x_x64_en-US.msi` | MSI package — for enterprise/group policy |
-
-Run the installer and the widget is ready. No restart needed.
+Want a ready-made installer? ⭐ the repo and open an issue: it tells us people are waiting for one.
 
 ---
 
@@ -88,7 +84,7 @@ Task descriptions support **GitHub Flavored Markdown**:
 
 ## Data storage
 
-All data is stored locally on your machine. No cloud sync, no telemetry.
+By default all data is stored locally on your machine, with no telemetry. Cloud sync only runs if you configure Supabase and sign in.
 
 ```
 %APPDATA%\com.agencia-rse.kanban-widget\kanban.json
@@ -211,6 +207,6 @@ Have an idea? [Request a feature](https://github.com/agenciaRSE/kanban-widget/is
 
 ## License
 
-[GNU General Public License v3.0](LICENSE) © 2025 [AGENCIA RSE](https://github.com/agenciaRSE)
+[GNU General Public License v3.0](LICENSE) © 2025 Diego Meijide · Made by [AGENCIA RSE](https://agenciarse.com/en/studio/), a small web studio from A Coruña, Spain.
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU GPL as published by the Free Software Foundation, either version 3 of the License, or any later version.
